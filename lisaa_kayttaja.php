@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':rooli', $rooli, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            header("Location: index.php"); //LISÄTÄÄN MYÖHEMMIN KÄYTTÄJÄLISTA.PHP SIVULLE
+            header("Location: index.php"); //OHJATAAN MYÖHEMMIN KÄYTTÄJÄLISTA.PHP SIVULLE
             exit;
         } else {
             echo "Käyttäjän lisääminen epäonnistui.";

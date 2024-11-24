@@ -1,5 +1,6 @@
 <?php
 include_once 'inc/header.php';
+print_r($_SESSION); 
 ?>
 
 <div class="container">

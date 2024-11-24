@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 
   if ($valid) {
-    $sql = "SELECT id, salasana
+    $sql = "SELECT id, salasana, rooli
           FROM kayttajat
           WHERE kayttajanimi = :kayttajanimi";
 
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $_SESSION['kirjautunut'] = true;
       $_SESSION['id'] = $kayttaja->id;
       $_SESSION['kayttajanimi'] = $kayttajanimi;
+      $_SESSION['rooli'] = $kayttaja->rooli;
 
       header("Location: index.php");
       exit;

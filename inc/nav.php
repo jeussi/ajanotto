@@ -1,4 +1,5 @@
-<?php require_once 'functions.php'; ?>
+<?php require_once 'functions.php';?>
+
 <nav class="navbar navbar-expand-lg bg-warning mb-3">
   <div class="container">
     <a class="navbar-brand" href="index.php">Ajanottojärjestelmä</a>
@@ -20,6 +21,11 @@
           <li class="nav-item">
             <a class="nav-link" href="tulospalvelu.php">Tulospalvelu</a>
           </li>
+          <?php if (tarkistaRooli('admin')) :?>
+          <li class="nav-item">
+            <a class="nav-link" href="lisaa_kayttaja.php">Lisää käyttäjä</a>
+          </li>
+          <?php endif; ?>
         <?php endif; ?>
       </ul>
       <?php if (tarkistaKirjautuminen()) : ?>

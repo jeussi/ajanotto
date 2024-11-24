@@ -12,7 +12,7 @@ function tarkistaKirjautuminen()
 
 function tarkistaRooli($vaadittuRooli) {
   if (isset($_SESSION['kirjautunut']) && $_SESSION['kirjautunut'] === true) {
-      return isset($_SESSION['rooli']) && $_SESSION['rooli'] === $vaadittuRooli;
+      return isset($_SESSION['rooli']) && strtolower($_SESSION['rooli']) === strtolower($vaadittuRooli);
   }
   return false;
 }
