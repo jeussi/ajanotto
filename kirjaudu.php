@@ -1,6 +1,6 @@
 <?php
-include_once 'inc/header.php';
-include_once 'inc/database.php';
+require_once 'inc/header.php';
+require_once 'inc/database.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $_SESSION['id'] = $kayttaja->id;
       $_SESSION['kayttajanimi'] = $kayttajanimi;
 
-      header("Location: lisaa_joukkue.php");
+      header("Location: index.php");
       exit;
     } else {
       $salasanaError = 'Tarkista salasana';
