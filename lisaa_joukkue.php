@@ -1,6 +1,6 @@
 <?php
 include_once 'inc/header.php';
 ?>
-LISÄÄ JOUKKUE
+LISÄÄ JOUKKUE!
 
 <?php include_once 'inc/footer.php'; ?>
