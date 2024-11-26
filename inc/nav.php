@@ -25,6 +25,9 @@
           <li class="nav-item">
             <a class="nav-link" href="lisaa_kayttaja.php">Lisää käyttäjä</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="kayttajat.php">Käyttäjät</a>
+          </li>
           <?php endif; ?>
         <?php endif; ?>
       </ul>
