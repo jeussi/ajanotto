@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':rooli', $rooli, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            header("Location: index.php"); //OHJATAAN MYÖHEMMIN KÄYTTÄJÄLISTA.PHP SIVULLE
+            header("Location: kayttajat.php"); //OHJATAAN KÄYTTÄJÄLISTA.PHP SIVULLE
             exit;
         } else {
             echo "Käyttäjän lisääminen epäonnistui.";
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </select>
             <div class="invalid-feedback"><?php echo $rooliError; ?></div>
         </div>
-        <button type="submit" class="btn btn-primary">Lisää käyttäjä</button>
+        <button type="submit" class="btn btn-success">Lisää käyttäjä</button>
     </form>
 </div>
 <?php include_once 'inc/footer.php'; ?>

@@ -38,7 +38,7 @@ include_once 'inc/header.php';
             <td><?php echo $row['rooli']; ?></td>
             <td>
               <a href="muokkaa_kayttaja.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Muokkaa</a>
-              <a href="poista_kayttaja.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Poista</a>
+              <a href="poista_kayttaja.php?kayttajaID=<?php echo $row['id']; ?>" class="btn btn-danger">Poista</a>
             </td>
           </tr>
         <?php endwhile;
