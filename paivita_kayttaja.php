@@ -1,5 +1,12 @@
 <?php
+require_once 'inc/header.php';
 require_once 'inc/database.php';
+require_once 'inc/functions.php';
+
+if (!tarkistaRooli('admin')) {
+  header("Location: index.php");
+  exit;
+}
 
 $kayttajaID = null;
 $kayttajanimi = '';
@@ -51,8 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<?php include_once 'inc/header.php'; ?>
 
 <div class="container">
     <div class="row">

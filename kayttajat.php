@@ -1,5 +1,11 @@
 <?php 
 include_once 'inc/header.php';
+include_once 'inc/functions.php';
+
+if (!tarkistaRooli('admin')) {
+  header("Location: index.php");
+  exit;
+}
 ?>
 
 <div class="container">
@@ -37,7 +43,7 @@ include_once 'inc/header.php';
             <td><?php echo $row['salasana']; ?></td>
             <td><?php echo $row['rooli']; ?></td>
             <td>
-              <a href="muokkaa_kayttaja.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Muokkaa</a>
+              <a href="paivita_kayttaja.php?kayttajaID=<?php echo $row['id']; ?>" class="btn btn-primary">Päivitä</a>
               <a href="poista_kayttaja.php?kayttajaID=<?php echo $row['id']; ?>" class="btn btn-danger">Poista</a>
             </td>
           </tr>

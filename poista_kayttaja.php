@@ -1,5 +1,12 @@
 <?php
-require_once "inc/database.php";
+require_once 'inc/header.php';
+require_once 'inc/database.php';
+require_once 'inc/functions.php';
+
+if (!tarkistaRooli('admin')) {
+  header("Location: index.php");
+  exit;
+}
 
 if (!empty($_POST)) {
     $kayttajaID = $_POST['kayttajaID'];
@@ -36,8 +43,6 @@ if (!empty($_POST)) {
     }
 }
 ?>
-
-<?php include_once 'inc/header.php'; ?>
 
 <div class="container text-center">
     <div class="card card-body bg-light mt-3">
