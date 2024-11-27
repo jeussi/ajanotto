@@ -37,7 +37,7 @@ include_once 'inc/header.php';
             <td><?php echo $row['koulu']; ?></td>
             <td><?php echo $row['jasen1'] . ', ' . $row['jasen2'] . ', ' . $row['jasen3']; ?></td>
             <td>
-              <a href="" class="btn btn-primary">Päivitä</a>
+              <a href="paivita_joukkue.php?joukkueID=<?php echo $row['id']; ?>" class="btn btn-primary">Päivitä</a>
               <a href="poista_joukkue.php?joukkueID=<?php echo $row['id']; ?>" class="btn btn-danger">Poista</a>
             </td>
           </tr>
