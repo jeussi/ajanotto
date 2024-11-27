@@ -1,11 +1,5 @@
 <?php 
 include_once 'inc/header.php';
-include_once 'inc/functions.php';
-
-if (!tarkistaRooli('admin')) {
-  header("Location: index.php");
-  exit;
-}
 ?>
 
 <div class="container">
@@ -44,7 +38,7 @@ if (!tarkistaRooli('admin')) {
             <td><?php echo $row['jasen1'] . ', ' . $row['jasen2'] . ', ' . $row['jasen3']; ?></td>
             <td>
               <a href="" class="btn btn-primary">Päivitä</a>
-              <a href="" class="btn btn-danger">Poista</a>
+              <a href="poista_joukkue.php?joukkueID=<?php echo $row['id']; ?>" class="btn btn-danger">Poista</a>
             </td>
           </tr>
         <?php endwhile;
