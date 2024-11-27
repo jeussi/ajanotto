@@ -13,10 +13,13 @@
             <a class="nav-link" aria-current="page" href="lisaa_joukkue.php">Lisää joukkue</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="lisaa_tulos.php">Lisää tulos</a>
+            <a class="nav-link" href="joukkueet.php">Joukkueet</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="ajanotto.php">Ajanotto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="lisaa_tulos.php">Lisää tulos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="tulospalvelu.php">Tulospalvelu</a>

@@ -15,7 +15,7 @@ if (!tarkistaRooli('admin')) {
 
   <div class="row">
     <p>
-      <a href="lisaa_kayttaja.php" class="btn btn-success">Lisää käyttäjä</a>
+      <a href="lisaa_joukkue.php" class="btn btn-success">Lisää joukkue</a>
     </p>
   </div>
 
@@ -24,27 +24,27 @@ if (!tarkistaRooli('admin')) {
       <thead>
         <tr>
           <th>#</th>
-          <th>Käyttäjänimi</th>
-          <th>salasana</th>
-          <th>Rooli</th>
+          <th>Nimi</th>
+          <th>Koulu</th>
+          <th>Jäsenet</th>
         </tr>
       </thead>
       <tbody>
         <?php
 
         require_once 'inc/database.php';
-        $sql = "SELECT * FROM kayttajat";
+        $sql = "SELECT * FROM joukkueet";
         $result = $pdo->query($sql);
         while ($row = $result->fetch()) :
         ?>
           <tr>
             <td><?php echo $row['id']; ?></td>
-            <td><?php echo $row['kayttajanimi']; ?></td>
-            <td><?php echo $row['salasana']; ?></td>
-            <td><?php echo $row['rooli']; ?></td>
+            <td><?php echo $row['nimi']; ?></td>
+            <td><?php echo $row['koulu']; ?></td>
+            <td><?php echo $row['jasen1'] . ', ' . $row['jasen2'] . ', ' . $row['jasen3']; ?></td>
             <td>
-              <a href="paivita_kayttaja.php?kayttajaID=<?php echo $row['id']; ?>" class="btn btn-primary">Päivitä</a>
-              <a href="poista_kayttaja.php?kayttajaID=<?php echo $row['id']; ?>" class="btn btn-danger">Poista</a>
+              <a href="" class="btn btn-primary">Päivitä</a>
+              <a href="" class="btn btn-danger">Poista</a>
             </td>
           </tr>
         <?php endwhile;
