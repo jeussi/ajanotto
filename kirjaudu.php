@@ -5,15 +5,12 @@ require_once 'inc/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  //luetaan tiedot lomakkeelta
   $kayttajanimi = $_POST['kayttajanimi'];
   $salasana = $_POST['salasana'];
 
-  //alustetaan virheilmoitukset
   $kayttajanimiError = '';
   $salasanaError = '';
 
-  //oletetaan että tiedot on syötetty oikein
   $valid = true;
 
   if (empty($kayttajanimi)) {
@@ -36,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $stmt->execute();
 
     $kayttaja = $stmt->fetch(PDO::FETCH_OBJ);
-
-    //tarkistetaan että salasana on oikein
 
     if ($kayttaja && password_verify($salasana, $kayttaja->salasana)) {
 

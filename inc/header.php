@@ -1,6 +1,4 @@
-<!-- tarkistaa onko käyttäjä kirjautunut sisään -->
 <?php
- 
 session_start();
 require_once 'inc/functions.php';
 $sivu = basename($_SERVER['PHP_SELF']);
@@ -11,7 +9,6 @@ if ($sivu != 'index.php' && $sivu != 'kirjaudu.php') {
   }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
