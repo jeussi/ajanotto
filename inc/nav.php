@@ -19,9 +19,6 @@
             <a class="nav-link" href="ajanotto.php">Ajanotto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="lisaa_tulos.php">Lisää tulos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="tulospalvelu.php">Tulospalvelu</a>
           </li>
           <?php if (tarkistaRooli('admin')) :?>
