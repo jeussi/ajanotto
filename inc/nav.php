@@ -1,4 +1,4 @@
-<?php require_once 'functions.php';?>
+<?php require_once 'functions.php'; ?>
 
 <nav class="navbar navbar-expand-lg bg-warning mb-3">
   <div class="container">
@@ -9,25 +9,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <?php if (tarkistaKirjautuminen()) : ?>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="lisaa_joukkue.php">Lisää joukkue</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="joukkueet.php">Joukkueet</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ajanotto.php">Ajanotto</a>
-          </li>
+          <?php if (!tarkistaRooli('tuomari')) : ?>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="lisaa_joukkue.php">Lisää joukkue</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="joukkueet.php">Joukkueet</a>
+            </li>
+          <?php endif; ?>
+          <?php if (!tarkistaRooli('sihteeri')) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="ajanotto.php">Ajanotto</a>
+            </li>
+          <?php endif; ?>
           <li class="nav-item">
             <a class="nav-link" href="tulospalvelu.php">Tulospalvelu</a>
           </li>
-          <?php if (tarkistaRooli('admin')) :?>
-          <li class="nav-item">
-            <a class="nav-link" href="lisaa_kayttaja.php">Lisää käyttäjä</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="kayttajat.php">Käyttäjät</a>
-          </li>
+          <?php if (tarkistaRooli('admin')) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="lisaa_kayttaja.php">Lisää käyttäjä</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kayttajat.php">Käyttäjät</a>
+            </li>
           <?php endif; ?>
         <?php endif; ?>
       </ul>

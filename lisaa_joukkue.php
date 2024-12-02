@@ -2,6 +2,11 @@
 require_once 'inc/database.php';
 include_once 'inc/header.php';
 
+if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
+  header("Location: index.php");
+  exit;
+}
+
 $error = '';
 $success = '';
 

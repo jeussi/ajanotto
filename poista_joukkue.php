@@ -1,6 +1,12 @@
 <?php
 require_once 'inc/header.php';
 require_once 'inc/database.php';
+require_once 'inc/functions.php';
+
+if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
+    header("Location: index.php");
+    exit;
+  }
 
 if (!empty($_POST)) {
     $joukkueID = $_POST['joukkueID'];
