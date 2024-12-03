@@ -1,6 +1,12 @@
 <?php
 require_once 'inc/header.php';
 require_once 'inc/database.php';
+require_once 'inc/functions.php';
+
+if (!tarkistaRooli('tuomari') && !tarkistaRooli('admin')) {
+  header("Location: index.php");
+  exit;
+}
 
 $sql = "SELECT id, nimi FROM joukkueet";
 $stmt = $pdo->query($sql);
