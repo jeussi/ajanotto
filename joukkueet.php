@@ -1,6 +1,6 @@
 <?php 
-include_once 'inc/header.php';
-include_once 'inc/functions.php';
+require_once 'inc/header.php';
+require_once 'inc/functions.php';
 
 if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
   header("Location: index.php");

@@ -1,5 +1,5 @@
 <?php
-include_once 'inc/header.php';
+require_once 'inc/header.php';
 print_r($_SESSION); 
 ?>
 
