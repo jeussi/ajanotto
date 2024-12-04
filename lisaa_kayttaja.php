@@ -1,7 +1,7 @@
 <?php
-require_once 'inc/header.php'; 
-require_once 'inc/database.php'; 
-require_once 'inc/functions.php';
+include_once 'inc/header.php'; 
+include_once 'inc/database.php'; 
+include_once 'inc/functions.php';
 
 if (!tarkistaRooli('admin')) {
   header("Location: index.php");
@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<div class="container">
-    <h2 class="mt-4">Lisää uusi käyttäjä</h2>
+<div class="container tausta">
+    <h2>Lisää uusi käyttäjä</h2>
     <form action="lisaa_kayttaja.php" method="POST">
         <div class="mb-3">
             <label for="kayttajanimi" class="form-label">Käyttäjänimi</label>

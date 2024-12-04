@@ -1,6 +1,6 @@
 <?php 
-require_once 'inc/header.php';
-require_once 'inc/functions.php';
+include_once 'inc/header.php';
+include_once 'inc/functions.php';
 
 if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
   header("Location: index.php");
@@ -10,7 +10,7 @@ if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
 
 <div class="container">
   <div class="row">
-    <h2>Käyttäjätiedot</h2>
+    <h2>Joukkuetiedot</h2>
   </div>
 
   <div class="row">

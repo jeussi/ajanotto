@@ -1,6 +1,6 @@
 <?php
-require_once 'inc/header.php';
-require_once 'inc/database.php';
+include_once 'inc/header.php';
+include_once 'inc/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 

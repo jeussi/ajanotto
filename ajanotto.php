@@ -1,7 +1,7 @@
 <?php
-require_once 'inc/header.php';
-require_once 'inc/database.php';
-require_once 'inc/functions.php';
+include_once 'inc/header.php';
+include_once 'inc/database.php';
+include_once 'inc/functions.php';
 
 if (!tarkistaRooli('tuomari') && !tarkistaRooli('admin')) {
   header("Location: index.php");
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<div class="container">
+<div class="container tausta">
   <h1>Ajanotto</h1>
   <form id="timeForm" method="post">
     <div class="mb-3">

@@ -1,0 +1,12 @@
+body {
+  background:  url('../img/stopwatch.png') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.tausta {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}

@@ -1,6 +1,6 @@
 <?php
-require_once 'inc/header.php';
-require_once 'inc/database.php';
+include_once 'inc/header.php';
+include_once 'inc/database.php';
 
 $vaihe = $_GET['vaihe'] ?? null;
 
@@ -34,7 +34,10 @@ $tulokset = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </html>
 
-<div class="container">
+<div class="container tausta">
+  <div class="row">
+    <h2>Tulospalvelu</h2>
+  </div>
 
   <div class="mb-3">
     <a href="?"><button class="btn btn-success">Kaikki erät</button></a>
@@ -45,7 +48,7 @@ $tulokset = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 
   <?php if (count($tulokset) > 0): ?>
-    <table>
+    <table class="tausta">
       <thead>
         <tr>
           <th>Joukkue ID</th>

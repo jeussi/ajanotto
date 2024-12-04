@@ -1,6 +1,6 @@
 <?php
-require_once 'inc/header.php';
-print_r($_SESSION); 
+include_once 'inc/header.php';
+// print_r($_SESSION); 
 ?>
 
 <div class="container">
