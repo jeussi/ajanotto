@@ -45,7 +45,7 @@ if (!empty($_POST)) {
 ?>
 
 <div class="container text-center">
-    <div class="card card-body bg-light mt-3">
+    <div class="tausta mt-3">
         <h3>Joukkueen poistaminen</h3>
         <p>Haluatko varmasti poistaa joukkueen <strong> ID: <?php echo $joukkue->id;?>, <?php echo $joukkue->nimi; ?> </strong>?</p>
         <form action="poista_joukkue.php" method="post">

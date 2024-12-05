@@ -45,7 +45,7 @@ if (!empty($_POST)) {
 ?>
 
 <div class="container text-center">
-    <div class="card card-body bg-light mt-3">
+    <div class="tausta mt-3">
         <h3>Käyttäjän poistaminen</h3>
         <p>Haluatko varmasti poistaa käyttäjän <strong><?php echo $kayttaja->kayttajanimi; ?></strong>?</p>
         <form action="poista_kayttaja.php" method="post">

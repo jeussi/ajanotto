@@ -8,19 +8,19 @@ if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
 }
 ?>
 
-<div class="container">
+<div class="container tausta">
   <div class="row">
     <h2>Joukkuetiedot</h2>
   </div>
 
-  <div class="row">
+  <div class="row mt-2">
     <p>
       <a href="lisaa_joukkue.php" class="btn btn-success">Lisää joukkue</a>
     </p>
   </div>
 
   <div class="row">
-    <table class="table table-striped">
+    <table class="table">
       <thead>
         <tr>
           <th>#</th>

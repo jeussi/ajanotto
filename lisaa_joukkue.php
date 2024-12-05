@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container">
   <div class="row">
     <div class="col-8 mx-auto">
-      <div class="card card-body bg-light mt-3">
+      <div class="tausta mt-3">
         <h2>Lisää joukkue</h2>
         <?php if ($error): ?>
           <div class="alert alert-danger"><?php echo $error; ?></div>

@@ -39,7 +39,7 @@ $tulokset = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h2>Tulospalvelu</h2>
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 mt-2">
     <a href="?"><button class="btn btn-success">Kaikki erät</button></a>
     <a href="?vaihe=alkuera"><button class="btn btn-success">Alkuerät</button></a>
     <a href="?vaihe=kerailyera"><button class="btn btn-success">Keräilyerät</button></a>

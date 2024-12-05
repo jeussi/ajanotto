@@ -8,19 +8,19 @@ if (!tarkistaRooli('admin')) {
 }
 ?>
 
-<div class="container">
+<div class="container tausta">
   <div class="row">
     <h2>Käyttäjätiedot</h2>
   </div>
 
-  <div class="row">
+  <div class="row mt-2">
     <p>
       <a href="lisaa_kayttaja.php" class="btn btn-success">Lisää käyttäjä</a>
     </p>
   </div>
 
   <div class="row">
-    <table class="table table-striped">
+    <table class="table">
       <thead>
         <tr>
           <th>#</th>
