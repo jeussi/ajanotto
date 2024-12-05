@@ -10,3 +10,7 @@ body {
   border-radius: 10px;
   margin-top: 20px;
 }
+
+.navbg {
+  background-color: rgba(0, 183, 174, 0.9);
+}

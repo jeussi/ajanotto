@@ -1,6 +1,10 @@
-<?php require_once 'functions.php'; ?>
+<?php 
+require_once 'functions.php';
+include_once 'header.php'; 
+?>
 
-<nav class="navbar navbar-expand-lg bg-warning mb-3">
+
+<nav class="navbar navbar-expand-lg navbg mb-3">
   <div class="container">
     <a class="navbar-brand" href="index.php">Ajanottojärjestelmä</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
