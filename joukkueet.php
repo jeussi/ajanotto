@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once 'inc/header.php';
 include_once 'inc/functions.php';
 
@@ -56,6 +56,6 @@ if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
   </div>
 </div>
 
-<?php 
+<?php
 include_once 'inc/footer.php';
 ?>
