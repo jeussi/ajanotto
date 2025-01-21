@@ -4,12 +4,48 @@ include_once 'inc/functions.php';
 include_once 'inc/database.php';
 
 if (!tarkistaKirjautuminen()){
-   header("Location: index.php");
-   exit;
- }
+  header("Location: index.php");
+  exit;
+}
+
+try {
+  $stmt = $pdo->query("SELECT id, nimi FROM joukkueet");
+  $joukkueet = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  die("Virhe: " . $e->getMessage());
+}
+
+$joukkueetNimet = [];
+foreach ($joukkueet as $joukkue) {
+  $joukkueetNimet[$joukkue['id']] = $joukkue['nimi'];
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $vaihe = $_POST['vaihe'];
+  $valitutJoukkueet = $_POST['joukkueet'];
+
+  if (count($valitutJoukkueet) < 6) {
+    echo "Valitse vähintään 6 joukkuetta.";
+    exit;
+  }
+
+  // Sekoitetaan joukkueet
+  shuffle($valitutJoukkueet);
+
+  $erät = array_chunk($valitutJoukkueet, 6);
+
+  echo "<h2>Arvotut listat ($vaihe)</h2>";
+  foreach ($erät as $i => $erä) {
+    echo "<h3>Erä " . ($i + 1) . "</h3>";
+    echo "<ul>";
+    foreach ($erä as $joukkue) {
+      $joukkueNimi = $joukkueetNimet[$joukkue];
+      echo "<li>$joukkueNimi</li>";
+    }
+    echo "</ul>";
+  }
+}
 ?>
-
-
 
 <div class="container">
   <form method="post" action="arvo_osallistujat.php">
@@ -20,6 +56,11 @@ if (!tarkistaKirjautuminen()){
     </select>
 
     <label for="joukkueet">Valitse joukkueet:</label>
+    <select name="joukkueet[]" id="joukkueet" multiple size="10" required>
+      <?php foreach ($joukkueet as $joukkue): ?>
+        <option value="<?= $joukkue['id'] ?>"><?= $joukkue['nimi'] ?></option>
+      <?php endforeach; ?>
+    </select>
 
     <button type="submit">Arvo listat</button>
   </form>
