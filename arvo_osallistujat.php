@@ -2,7 +2,14 @@
 include_once 'inc/header.php';
 include_once 'inc/functions.php';
 include_once 'inc/database.php';
+
+if (!tarkistaKirjautuminen()){
+   header("Location: index.php");
+   exit;
+ }
 ?>
+
+
 
 <div class="container">
   <form method="post" action="arvo_osallistujat.php">
