@@ -12,28 +12,22 @@ th {
   background-color: #f4f4f4;
 }
 
-.joukkueet-lista {
-  display: block;
+.joukkueet-lista-container {
+  margin: 10px 0;
 }
 
-.joukkue-item {
-  margin-bottom: 10px;
-  padding: 10px;
+.joukkueet-lista {
   border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+  height: 200px;
+  overflow-y: scroll;
   background-color: #f9f9f9;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
 }
 
-.joukkue-item input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-.joukkue-item:hover {
-  background-color: #e8f0ff;
-  border-color: #007bff;
+.joukkueet-lista label {
+  display: block;
+  margin-bottom: 5px;
 }
 

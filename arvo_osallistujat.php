@@ -3,7 +3,7 @@ include_once 'inc/header.php';
 include_once 'inc/functions.php';
 include_once 'inc/database.php';
 
-if (!tarkistaKirjautuminen()){
+if (!tarkistaKirjautuminen()) {
   header("Location: index.php");
   exit;
 }
@@ -48,9 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <html>
-  <head>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
+
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
 </html>
 
 <div class="container">
@@ -67,13 +69,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button type="button" id="clear-all" class="btn btn-danger btn-sm">Tyhjennä</button>
     </div>
 
-    <div class="joukkueet-lista">
-      <?php foreach ($joukkueet as $joukkue): ?>
-        <label class="joukkue-item">
-          <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['id'] ?>">
-          <?= htmlspecialchars($joukkue['nimi']) ?>
-        </label>
-      <?php endforeach; ?>
+    <div class="joukkueet-lista-container">
+      <label for="joukkueet">Valitse joukkueet:</label>
+      <div class="joukkueet-lista">
+        <?php foreach ($joukkueet as $joukkue): ?>
+          <label>
+            <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['id'] ?>">
+            <?= $joukkue['nimi'] ?>
+          </label>
+        <?php endforeach; ?>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary mt-3">Arvo listat</button>
@@ -81,6 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 
-<?php 
-include_once 'inc/footer.php'; 
+<?php
+include_once 'inc/footer.php';
 ?>
