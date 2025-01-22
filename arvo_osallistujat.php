@@ -62,6 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </select>
 
     <h3>Valitse joukkueet:</h3>
+    <div class="mb-2">
+      <button type="button" id="select-all" class="btn btn-success btn-sm">Valitse kaikki</button>
+      <button type="button" id="clear-all" class="btn btn-danger btn-sm">Tyhjennä</button>
+    </div>
+
     <div class="joukkueet-lista">
       <?php foreach ($joukkueet as $joukkue): ?>
         <label class="joukkue-item">
