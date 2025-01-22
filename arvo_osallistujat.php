@@ -47,6 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<html>
+  <head>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+</html>
+
 <div class="container">
   <form method="post" action="arvo_osallistujat.php">
     <label for="vaihe">Valitse vaihe:</label>
@@ -55,13 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <option value="valiera">Välierä</option>
     </select>
 
-    <label for="joukkueet">Valitse joukkueet:</label>
-    <select name="joukkueet[]" id="joukkueet" multiple size="10" required>
+    <h3>Valitse joukkueet:</h3>
+    <div class="joukkueet-lista">
       <?php foreach ($joukkueet as $joukkue): ?>
-        <option value="<?= $joukkue['id'] ?>"><?= $joukkue['nimi'] ?></option>
+        <label class="joukkue-item">
+          <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['id'] ?>">
+          <?= htmlspecialchars($joukkue['nimi']) ?>
+        </label>
       <?php endforeach; ?>
-    </select>
+    </div>
 
-    <button type="submit">Arvo listat</button>
+    <button type="submit" class="btn btn-primary mt-3">Arvo listat</button>
   </form>
 </div>
