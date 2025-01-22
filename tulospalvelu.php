@@ -34,49 +34,53 @@ $tulokset = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </html>
 
-<div class="container tausta">
+<div class="container">
   <div class="row">
-    <h2>Tulospalvelu</h2>
-  </div>
+    <div class="col-10 mx-auto tausta">
+      <div class="row">
+        <h2>Tulospalvelu</h2>
+      </div>
 
-  <div class="mb-3 mt-2">
-    <a href="?"><button class="btn btn-success">Kaikki erät</button></a>
-    <a href="?vaihe=alkuera"><button class="btn btn-success">Alkuerät</button></a>
-    <a href="?vaihe=kerailyera"><button class="btn btn-success">Keräilyerät</button></a>
-    <a href="?vaihe=valiera"><button class="btn btn-success">Välierät</button></a>
-    <a href="?vaihe=finaali"><button class="btn btn-success">Finaali</button></a>
-  </div>
+      <div class="mb-3 mt-2">
+        <a href="?"><button class="btn btn-success">Kaikki erät</button></a>
+        <a href="?vaihe=alkuera"><button class="btn btn-success">Alkuerät</button></a>
+        <a href="?vaihe=kerailyera"><button class="btn btn-success">Keräilyerät</button></a>
+        <a href="?vaihe=valiera"><button class="btn btn-success">Välierät</button></a>
+        <a href="?vaihe=finaali"><button class="btn btn-success">Finaali</button></a>
+      </div>
 
-  <?php if (count($tulokset) > 0): ?>
-    <table class="tausta">
-      <thead>
-        <tr>
-          <th>Joukkue ID</th>
-          <th>Joukkueen Nimi</th>
-          <th>Vaihe</th>
-          <th>Tehtävä 1 Aika</th>
-          <th>Tehtävä 2 Aika</th>
-          <th>Tehtävä 3 Aika</th>
-          <th>Kokonaisaika</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($tulokset as $tulos): ?>
-          <tr>
-            <td><?= ($tulos['joukkue_id']) ?></td>
-            <td><?= ($tulos['joukkue_nimi']) ?></td>
-            <td><?= ($tulos['vaihe']) ?></td>
-            <td><?= ($tulos['tehtava1_aika']) ?></td>
-            <td><?= ($tulos['tehtava2_aika']) ?></td>
-            <td><?= ($tulos['tehtava3_aika']) ?></td>
-            <td><?= ($tulos['kokonaisaika']) ?></td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
-  <?php else: ?>
-    <p>Ei tallennettuja tuloksia</p>
-  <?php endif; ?>
+      <?php if (count($tulokset) > 0): ?>
+        <table class="tausta">
+          <thead>
+            <tr>
+              <th>Joukkue ID</th>
+              <th>Joukkueen Nimi</th>
+              <th>Vaihe</th>
+              <th>Tehtävä 1 Aika</th>
+              <th>Tehtävä 2 Aika</th>
+              <th>Tehtävä 3 Aika</th>
+              <th>Kokonaisaika</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($tulokset as $tulos): ?>
+              <tr>
+                <td><?= ($tulos['joukkue_id']) ?></td>
+                <td><?= ($tulos['joukkue_nimi']) ?></td>
+                <td><?= ($tulos['vaihe']) ?></td>
+                <td><?= ($tulos['tehtava1_aika']) ?></td>
+                <td><?= ($tulos['tehtava2_aika']) ?></td>
+                <td><?= ($tulos['tehtava3_aika']) ?></td>
+                <td><?= ($tulos['kokonaisaika']) ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      <?php else: ?>
+        <p>Ei tallennettuja tuloksia</p>
+      <?php endif; ?>
+    </div>
+  </div>
 </div>
 
 <?php include_once 'inc/footer.php'; ?>

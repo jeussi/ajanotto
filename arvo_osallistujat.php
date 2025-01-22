@@ -56,33 +56,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </html>
 
 <div class="container">
-  <form method="post" action="arvo_osallistujat.php">
-    <label for="vaihe">Valitse vaihe:</label>
-    <select name="vaihe" id="vaihe" required>
-      <option value="alkuera">Alkuerä</option>
-      <option value="valiera">Välierä</option>
-    </select>
+  <div class="row">
+    <div class="col-6 mx-auto tausta">
 
-    <h3>Valitse joukkueet:</h3>
-    <div class="mb-2">
-      <button type="button" id="select-all" class="btn btn-success btn-sm">Valitse kaikki</button>
-      <button type="button" id="clear-all" class="btn btn-danger btn-sm">Tyhjennä</button>
+      <form method="post" action="arvo_osallistujat.php">
+        <label for="vaihe">Valitse vaihe:</label>
+        <select name="vaihe" id="vaihe" required>
+          <option value="alkuera">Alkuerä</option>
+          <option value="valiera">Välierä</option>
+        </select>
+
+
+
+        <div class="joukkueet-lista-container">
+          <label for="joukkueet">Valitse joukkueet:</label>
+          <div class="joukkueet-lista">
+            <?php foreach ($joukkueet as $joukkue): ?>
+              <label>
+                <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['id'] ?>">
+                <?= $joukkue['nimi'] ?>
+              </label>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <button type="button" id="select-all" class="btn btn-success btn-sm">Valitse kaikki</button>
+          <button type="button" id="clear-all" class="btn btn-danger btn-sm">Tyhjennä</button>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Arvo listat</button>
+      </form>
+
     </div>
-
-    <div class="joukkueet-lista-container">
-      <label for="joukkueet">Valitse joukkueet:</label>
-      <div class="joukkueet-lista">
-        <?php foreach ($joukkueet as $joukkue): ?>
-          <label>
-            <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['id'] ?>">
-            <?= $joukkue['nimi'] ?>
-          </label>
-        <?php endforeach; ?>
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary mt-3">Arvo listat</button>
-  </form>
+  </div>
 </div>
 
 
