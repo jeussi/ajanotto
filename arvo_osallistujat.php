@@ -79,3 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit" class="btn btn-primary mt-3">Arvo listat</button>
   </form>
 </div>
+
+
+<?php 
+include_once 'inc/footer.php'; 
+?>
