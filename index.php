@@ -8,6 +8,6 @@ include_once 'inc/header.php';
   <p class="lead">Tervetuloa ajanottojärjestelmään.</p>
 </div>
 
-<?php 
-include_once 'inc/footer.php'; 
+<?php
+include_once 'inc/footer.php';
 ?>

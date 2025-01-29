@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ]);
 
   echo "<div class='alert alert-success'>Aika tallennettu onnistuneesti!</div>";
-
 }
 ?>
 
@@ -45,17 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <select id="joukkue" name="joukkueid" class="form-select" required>
         <option value="">- Valitse joukkue -</option>
         <?php foreach ($joukkueet as $joukkue): ?>
-          <option value="<?= $joukkue['joukkueid'] ?>"><?= $joukkue['nimi'] ?></option>
+          <option value="<?= $joukkue['id'] ?>"><?= $joukkue['nimi'] ?></option>
         <?php endforeach; ?>
       </select>
     </div>
     <div class="mb-3">
-      <label for="era" class="form-label">Erä</label>
-      <select id="era" name="era" class="form-select" required>
-        <option value="Alkuera">Alkuerä</option>
-        <option value="Kerailyera">Keräilyerä</option>
-        <option value="Valiera">Välierä</option>
-        <option value="Finaali">Finaali</option>
+      <label for="vaihe" class="form-label">Vaihe</label>
+      <select id="vaihe" name="vaihe" class="form-select" required>
+        <option value="alkuera">Alkuerä</option>
+        <option value="kerailyera">Keräilyerä</option>
+        <option value="valiera">Välierä</option>
+        <option value="finaali">Finaali</option>
       </select>
     </div>
 
@@ -66,11 +65,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <!--<button type="button" id="resetBtn" class="btn btn-secondary">Nollaa</button> -->
       <button type="button" id="lapBtn" class="btn btn-primary">Kierros</button>
     </div>
+        <div id="timer">
+          <h2 id="display">00:00:00</h2>
+          <button type="button" id="startBtn" class="btn btn-success">Käynnistä</button>
+          <button type="button" id="stopBtn" class="btn btn-danger">Pysäytä</button>
+          <button type="button" id="resetBtn" class="btn btn-secondary">Nollaa</button>
+          <button type="button" id="lapBtn" class="btn btn-primary">Kierros</button>
+        </div>
 
     <div id="laps">
       <div class="mb-3">
         <label for="tehtava1aika" class="form-label">Tehtävä 1 aika</label>
         <input type="text" id="tehtava1aika" name="tehtava1aika" class="form-control" placeholder="Tehtävä 1 aika (mm:ss:ms)" readonly>
+        <div id="laps"></div>
 
         <label for="tehtava2aika" class="form-label">Tehtävä 2 aika</label>
         <input type="text" id="tehtava2aika" name="tehtava2aika" class="form-control" placeholder="Tehtävä 2 aika (mm:ss:ms)" readonly>

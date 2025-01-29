@@ -1,6 +1,6 @@
-<?php 
+<?php
 require_once 'functions.php';
-include_once 'header.php'; 
+include_once 'header.php';
 ?>
 
 
@@ -19,6 +19,9 @@ include_once 'header.php';
             </li>
             <li class="nav-item">
               <a class="nav-link" href="joukkueet.php">Joukkueet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="arvo_osallistujat.php">Erien osallistujalistat</a>
             </li>
           <?php endif; ?>
           <?php if (!tarkistaRooli('sihteeri')) : ?>
