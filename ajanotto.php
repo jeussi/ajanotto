@@ -8,27 +8,27 @@ if (!tarkistaRooli('tuomari') && !tarkistaRooli('admin')) {
   exit;
 }
 
-$sql = "SELECT id, nimi FROM joukkueet";
+$sql = "SELECT joukkueid, nimi FROM joukkueet";
 $stmt = $pdo->query($sql);
 $joukkueet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $joukkue_id = $_POST['joukkue_id'];
-  $vaihe = $_POST['vaihe'];
-  $tehtava1_aika = $_POST['tehtava1_aika'];
-  $tehtava2_aika = $_POST['tehtava2_aika'];
-  $tehtava3_aika = $_POST['tehtava3_aika'];
+  $joukkueid = $_POST['joukkueid'];
+  $era = $_POST['era'];
+  $tehtava1aika = $_POST['tehtava1aika'];
+  $tehtava2aika = $_POST['tehtava2aika'];
+  $tehtava3aika = $_POST['tehtava3aika'];
   $kokonaisaika = $_POST['kokonaisaika'];
 
-  $sql = "INSERT INTO erat (vaihe, joukkue_id, tehtava1_aika, tehtava2_aika, tehtava3_aika, kokonaisaika)
-            VALUES (:vaihe, :joukkue_id, :tehtava1_aika, :tehtava2_aika, :tehtava3_aika, :kokonaisaika)";
+  $sql = "INSERT INTO tulostaulu (era, joukkueid, tehtava1aika, tehtava2aika, tehtava3aika, kokonaisaika)
+            VALUES (:era, :joukkueid, :tehtava1aika, :tehtava2aika, :tehtava3aika, :kokonaisaika)";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
-    ':vaihe' => $vaihe,
-    ':joukkue_id' => $joukkue_id,
-    ':tehtava1_aika' => $tehtava1_aika,
-    ':tehtava2_aika' => $tehtava2_aika,
-    ':tehtava3_aika' => $tehtava3_aika,
+    ':era' => $era,
+    ':joukkueid' => $joukkueid,
+    ':tehtava1aika' => $tehtava1aika,
+    ':tehtava2aika' => $tehtava2aika,
+    ':tehtava3aika' => $tehtava3aika,
     ':kokonaisaika' => $kokonaisaika,
   ]);
 
@@ -42,20 +42,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <form id="timeForm" method="post">
     <div class="mb-3">
       <label for="joukkue" class="form-label">Valitse joukkue</label>
-      <select id="joukkue" name="joukkue_id" class="form-select" required>
+      <select id="joukkue" name="joukkueid" class="form-select" required>
         <option value="">- Valitse joukkue -</option>
         <?php foreach ($joukkueet as $joukkue): ?>
-          <option value="<?= $joukkue['id'] ?>"><?= $joukkue['nimi'] ?></option>
+          <option value="<?= $joukkue['joukkueid'] ?>"><?= $joukkue['nimi'] ?></option>
         <?php endforeach; ?>
       </select>
     </div>
     <div class="mb-3">
-      <label for="vaihe" class="form-label">Vaihe</label>
-      <select id="vaihe" name="vaihe" class="form-select" required>
-        <option value="alkuera">Alkuerä</option>
-        <option value="kerailyera">Keräilyerä</option>
-        <option value="valiera">Välierä</option>
-        <option value="finaali">Finaali</option>
+      <label for="era" class="form-label">Erä</label>
+      <select id="era" name="era" class="form-select" required>
+        <option value="Alkuera">Alkuerä</option>
+        <option value="Kerailyera">Keräilyerä</option>
+        <option value="Valiera">Välierä</option>
+        <option value="Finaali">Finaali</option>
       </select>
     </div>
 
@@ -69,14 +69,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div id="laps">
       <div class="mb-3">
-        <label for="tehtava1_aika" class="form-label">Tehtävä 1 aika</label>
-        <input type="text" id="tehtava1_aika" name="tehtava1_aika" class="form-control" placeholder="Tehtävä 1 aika (mm:ss:ms)" readonly>
+        <label for="tehtava1aika" class="form-label">Tehtävä 1 aika</label>
+        <input type="text" id="tehtava1aika" name="tehtava1aika" class="form-control" placeholder="Tehtävä 1 aika (mm:ss:ms)" readonly>
 
-        <label for="tehtava2_aika" class="form-label">Tehtävä 2 aika</label>
-        <input type="text" id="tehtava2_aika" name="tehtava1_aika" class="form-control" placeholder="Tehtävä 2 aika (mm:ss:ms)" readonly>
+        <label for="tehtava2aika" class="form-label">Tehtävä 2 aika</label>
+        <input type="text" id="tehtava2aika" name="tehtava2aika" class="form-control" placeholder="Tehtävä 2 aika (mm:ss:ms)" readonly>
 
-        <label for="tehtava3_aika" class="form-label">Tehtävä 3 aika</label>
-        <input type="text" id="tehtava3_aika" name="tehtava1_aika" class="form-control" placeholder="Tehtävä 3 aika (mm:ss:ms)" readonly>
+        <label for="tehtava3aika" class="form-label">Tehtävä 3 aika</label>
+        <input type="text" id="tehtava3aika" name="tehtava3aika" class="form-control" placeholder="Tehtävä 3 aika (mm:ss:ms)" readonly>
 
         <label for="kokonaisaika" class="form-label">Kokonaisaika</label>
         <input type="text" id="kokonaisaika" name="kokonaisaika" class="form-control" placeholder="Kokonaisaika (mm:ss:ms)" readonly>

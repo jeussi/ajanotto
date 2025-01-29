@@ -105,9 +105,9 @@ class Ajastin {
             this.stop()
         }
         //Näytetään nykyiset ajat
-        if (this.times[0]){document.getElementById("tehtava1_aika").value = this.times[0];}
-        if (this.times[1]){document.getElementById("tehtava2_aika").value = this.times[1];}
-        if (this.times[2]){document.getElementById("tehtava3_aika").value = this.times[2];}
+        if (this.times[0]){document.getElementById("tehtava1aika").value = this.times[0];}
+        if (this.times[1]){document.getElementById("tehtava2aika").value = this.times[1];}
+        if (this.times[2]){document.getElementById("tehtava3aika").value = this.times[2];}
     }
 
 
