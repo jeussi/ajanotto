@@ -40,13 +40,13 @@ if (!tarkistaRooli('sihteeri') && !tarkistaRooli('admin')) {
             while ($row = $result->fetch()) :
             ?>
               <tr>
-                <td><?php echo $row['id']; ?></td>
+                <td><?php echo $row['joukkueid']; ?></td>
                 <td><?php echo $row['nimi']; ?></td>
                 <td><?php echo $row['koulu']; ?></td>
                 <td><?php echo $row['jasen1'] . ', ' . $row['jasen2'] . ', ' . $row['jasen3']; ?></td>
                 <td>
-                  <a href="paivita_joukkue.php?joukkueID=<?php echo $row['id']; ?>" class="btn btn-primary float-end">Päivitä</a>
-                  <a href="poista_joukkue.php?joukkueID=<?php echo $row['id']; ?>" class="btn btn-danger float-end">Poista</a>
+                  <a href="paivita_joukkue.php?joukkueID=<?php echo $row['joukkueid']; ?>" class="btn btn-primary float-end">Päivitä</a>
+                  <a href="poista_joukkue.php?joukkueID=<?php echo $row['joukkueid']; ?>" class="btn btn-danger float-end">Poista</a>
                 </td>
               </tr>
             <?php endwhile;

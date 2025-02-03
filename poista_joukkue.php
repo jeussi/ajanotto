@@ -30,7 +30,7 @@ if (!empty($_POST)) {
         exit;
     }
 
-    $sql = "SELECT id, nimi, koulu, jasen1, jasen2, jasen3 FROM joukkueet WHERE id = :joukkueID";
+    $sql = "SELECT joukkueid, nimi, koulu, jasen1, jasen2, jasen3 FROM joukkueet WHERE joukkueid = :joukkueID";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':joukkueID', $joukkueID, PDO::PARAM_INT);
     $stmt->execute();
@@ -47,7 +47,7 @@ if (!empty($_POST)) {
 <div class="container text-center">
     <div class="tausta mt-3">
         <h3>Joukkueen poistaminen</h3>
-        <p>Haluatko varmasti poistaa joukkueen <strong> ID: <?php echo $joukkue->id;?>, <?php echo $joukkue->nimi; ?> </strong>?</p>
+        <p>Haluatko varmasti poistaa joukkueen <strong> ID: <?php echo $joukkue->joukkueid;?>, <?php echo $joukkue->nimi; ?> </strong>?</p>
         <form action="poista_joukkue.php" method="post">
             <input type="hidden" name="joukkueID" value="<?php echo $joukkue->id; ?>">
             <button type="submit" class="btn btn-danger">Poista</button>

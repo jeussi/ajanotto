@@ -9,7 +9,7 @@ if (!tarkistaKirjautuminen()) {
 }
 
 try {
-  $stmt = $pdo->query("SELECT id, nimi FROM joukkueet");
+  $stmt = $pdo->query("SELECT joukkueid, nimi FROM joukkueet");
   $joukkueet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
   die("Virhe: " . $e->getMessage());
@@ -17,7 +17,7 @@ try {
 
 $joukkueetNimet = [];
 foreach ($joukkueet as $joukkue) {
-  $joukkueetNimet[$joukkue['id']] = $joukkue['nimi'];
+  $joukkueetNimet[$joukkue['joukkueid']] = $joukkue['nimi'];
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="container">
   <div class="row">
-    <div class="col-6 mx-auto tausta">
+    <div class="col-4 mx-auto tausta">
 
       <form method="post" action="arvo_osallistujat.php">
         <label for="vaihe">Valitse vaihe:</label>
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="joukkueet-lista">
             <?php foreach ($joukkueet as $joukkue): ?>
               <label>
-                <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['id'] ?>">
+                <input type="checkbox" name="joukkueet[]" value="<?= $joukkue['joukkueid'] ?>">
                 <?= $joukkue['nimi'] ?>
               </label>
             <?php endforeach; ?>

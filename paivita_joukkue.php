@@ -24,7 +24,7 @@ if (!empty($_GET['joukkueID'])) {
 }
 
 if ($joukkueID) {
-    $sql = "SELECT * FROM joukkueet WHERE id = :joukkueID";
+    $sql = "SELECT * FROM joukkueet WHERE joukkueid = :joukkueID";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':joukkueID', $joukkueID, PDO::PARAM_INT);
     $stmt->execute();
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Kaikki kentät ovat pakollisia.';
     } else {
         $sql = "UPDATE joukkueet SET nimi = :nimi, koulu = :koulu, jasen1 = :jasen1, jasen2 = :jasen2,
-        jasen3 = :jasen3 WHERE id = :joukkueID";
+        jasen3 = :jasen3 WHERE joukkueid = :joukkueID";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nimi', $nimi, PDO::PARAM_STR);
         $stmt->bindParam(':koulu', $koulu, PDO::PARAM_STR);
