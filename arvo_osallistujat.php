@@ -8,12 +8,16 @@ if (!tarkistaKirjautuminen()) {
   exit;
 }
 
-try {
-  $stmt = $pdo->query("SELECT joukkueid, nimi FROM joukkueet");
-  $joukkueet = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  die("Virhe: " . $e->getMessage());
-}
+// try {
+//   $stmt = $pdo->query("SELECT joukkueid, nimi FROM joukkueet");
+//   $joukkueet = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// } catch (PDOException $e) {
+//   die("Virhe: " . $e->getMessage());
+// }
+
+$sql = "SELECT joukkueid, nimi FROM joukkueet";
+$stmt = $pdo->query($sql);
+$joukkueet = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $joukkueetNimet = [];
 foreach ($joukkueet as $joukkue) {
@@ -29,20 +33,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
   }
 
+
   // Sekoitetaan joukkueet
   shuffle($valitutJoukkueet);
 
   $erät = array_chunk($valitutJoukkueet, 6);
 
-  echo "<h2>Arvotut listat ($vaihe)</h2>";
+  $sql = "INSERT INTO arvotut_erat (vaihe, era_numero, joukkue_id) VALUES (:vaihe, :era_numero, :joukkue_id)";
+  $stmt = $pdo->prepare($sql);
+
+
   foreach ($erät as $i => $erä) {
-    echo "<h3>Erä " . ($i + 1) . "</h3>";
-    echo "<ul>";
-    foreach ($erä as $joukkue) {
-      $joukkueNimi = $joukkueetNimet[$joukkue];
-      echo "<li>$joukkueNimi</li>";
+    $era_numero = $i + 1;
+
+    foreach ($erä as $joukkueID) {
+      $stmt->execute([
+        ':vaihe' => $vaihe,
+        ':era_numero' => $era_numero,
+        ':joukkue_id' => $joukkueID
+      ]);
     }
-    echo "</ul>";
+  }
+
+  echo "<div class='alert alert-success'>Arvotut listat tallennettu!</div>";
+  foreach ($erät as $i => $erä) {
+
+    foreach ($erä as $joukkueID) {
+      $joukkueNimi = $joukkueetNimet[$joukkueID] ?? "Tuntematon joukkue";
+    }
   }
 }
 ?>
@@ -66,8 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <option value="valiera">Välierä</option>
         </select>
 
-
-
         <div class="joukkueet-lista-container">
           <label for="joukkueet">Valitse joukkueet:</label>
           <div class="joukkueet-lista">
@@ -90,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 </div>
-
 
 <?php
 include_once 'inc/footer.php';

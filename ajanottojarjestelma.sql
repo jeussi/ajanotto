@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 03.02.2025 klo 13:53
+-- Generation Time: 04.02.2025 klo 15:41
 -- Palvelimen versio: 5.7.39
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `ajanottojarjestelma`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Rakenne taululle `arvotut_erat`
+--
+
+CREATE TABLE `arvotut_erat` (
+  `id` int(11) NOT NULL,
+  `vaihe` enum('alkuera','valiera','kerailyera','finaali') NOT NULL,
+  `era_numero` int(11) NOT NULL,
+  `joukkue_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -123,11 +136,19 @@ CREATE TABLE `tulostaulu` (
 INSERT INTO `tulostaulu` (`aikaid`, `joukkueid`, `era`, `tehtava1aika`, `tehtava2aika`, `tehtava3aika`, `kokonaisaika`) VALUES
 (1, 1, 'Alkuera', '00:01.200', '00:00.752', '00:00.841', '00:02.793'),
 (2, 3, 'Kerailyera', '00:00.984', '00:00.896', '00:00.792', '00:02.672'),
-(3, 8, 'Finaali', '00:08.025', '00:05.039', '00:06.618', '00:19.683');
+(3, 8, 'Finaali', '00:08.025', '00:05.039', '00:06.618', '00:19.683'),
+(4, 1, 'Finaali', '00:01.599', '00:01.339', '00:01.088', '00:04.026');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `arvotut_erat`
+--
+ALTER TABLE `arvotut_erat`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `joukkue_id` (`joukkue_id`);
 
 --
 -- Indexes for table `erat`
@@ -160,6 +181,12 @@ ALTER TABLE `tulostaulu`
 --
 
 --
+-- AUTO_INCREMENT for table `arvotut_erat`
+--
+ALTER TABLE `arvotut_erat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `erat`
 --
 ALTER TABLE `erat`
@@ -181,11 +208,17 @@ ALTER TABLE `kayttajat`
 -- AUTO_INCREMENT for table `tulostaulu`
 --
 ALTER TABLE `tulostaulu`
-  MODIFY `aikaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `aikaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Rajoitteet vedostauluille
 --
+
+--
+-- Rajoitteet taululle `arvotut_erat`
+--
+ALTER TABLE `arvotut_erat`
+  ADD CONSTRAINT `arvotut_erat_ibfk_1` FOREIGN KEY (`joukkue_id`) REFERENCES `joukkueet` (`joukkueid`);
 
 --
 -- Rajoitteet taululle `erat`
