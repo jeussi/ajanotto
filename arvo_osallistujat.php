@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="col-4 mx-auto tausta">
 
       <form method="post" action="arvo_osallistujat.php">
-        <label for="vaihe">Valitse vaihe:</label>
+        <label for="vaihe">Valitse erä:</label>
         <select name="vaihe" id="vaihe" required>
           <option value="alkuera">Alkuerä</option>
           <option value="valiera">Välierä</option>

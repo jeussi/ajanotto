@@ -55,7 +55,7 @@ $tulokset = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
               <th>Joukkue ID</th>
               <th>Joukkueen Nimi</th>
-              <th>Vaihe</th>
+              <th>Erä</th>
               <th>Tehtävä 1 Aika</th>
               <th>Tehtävä 2 Aika</th>
               <th>Tehtävä 3 Aika</th>
