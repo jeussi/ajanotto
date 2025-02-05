@@ -21,7 +21,7 @@ include_once 'header.php';
               <a class="nav-link" href="joukkueet.php">Joukkueet</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="arvo_osallistujat.php">Erien osallistujalistat</a>
+              <a class="nav-link" href="arvo_osallistujat.php">Erien arpominen</a>
             </li>
           <?php endif; ?>
           <?php if (!tarkistaRooli('sihteeri')) : ?>

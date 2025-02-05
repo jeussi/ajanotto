@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 04.02.2025 klo 15:41
+-- Generation Time: 05.02.2025 klo 13:11
 -- Palvelimen versio: 5.7.39
 -- PHP Version: 8.1.10
 
@@ -33,6 +33,28 @@ CREATE TABLE `arvotut_erat` (
   `era_numero` int(11) NOT NULL,
   `joukkue_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Vedos taulusta `arvotut_erat`
+--
+
+INSERT INTO `arvotut_erat` (`id`, `vaihe`, `era_numero`, `joukkue_id`) VALUES
+(1, 'alkuera', 1, 1),
+(2, 'alkuera', 1, 3),
+(3, 'alkuera', 1, 8),
+(4, 'alkuera', 1, 2),
+(5, 'alkuera', 1, 4),
+(6, 'alkuera', 1, 5),
+(7, 'alkuera', 2, 7),
+(8, 'alkuera', 2, 6),
+(9, 'valiera', 1, 1),
+(10, 'valiera', 1, 4),
+(11, 'valiera', 1, 2),
+(12, 'valiera', 1, 6),
+(13, 'valiera', 1, 7),
+(14, 'valiera', 1, 8),
+(15, 'valiera', 2, 5),
+(16, 'valiera', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -184,7 +206,7 @@ ALTER TABLE `tulostaulu`
 -- AUTO_INCREMENT for table `arvotut_erat`
 --
 ALTER TABLE `arvotut_erat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `erat`
