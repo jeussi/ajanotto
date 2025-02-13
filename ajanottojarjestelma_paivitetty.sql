@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 13.02.2025 klo 13:33
+-- Generation Time: 13.02.2025 klo 13:46
 -- Palvelimen versio: 5.7.39
 -- PHP Version: 8.1.10
 
