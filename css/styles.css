@@ -40,3 +40,29 @@ th {
   color: #0056b3;
   cursor: pointer;
 }
+
+.containerajat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.boxajat {
+  width: 120px;
+  height: 120px;
+  background-color: red;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.nopein {
+  background-color: #ffeb3b;
+  font-weight: bold;
+}
