@@ -10,7 +10,7 @@ if (!tarkistaRooli('tuomari') && !tarkistaRooli('admin')) {
 
 $tuomari_id = $_SESSION['id']; 
 
-$sql = "SELECT j.joukkueid, j.nimi, ae.vaihe, ae.era_numero, ae.rataid
+$sql = "SELECT j.joukkueid, j.nimi, ae.vaihe, ae.era_numero
         FROM arvotut_erat ae
         JOIN joukkueet j ON ae.joukkue_id = j.joukkueid
         WHERE ae.tuomari_id = :tuomari_id";
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <select id="joukkue" name="joukkueid" class="form-select" onchange="updateEraNumero()" required>
                 <option value="">- Valitse joukkue -</option>
                 <?php foreach ($arvotut_joukkueet as $joukkue): ?>
-                    <option value="<?= $joukkue['joukkueid'] ?>" data-rataid="<?= $joukkue['rataid'] ?>" data-era="<?= $joukkue['vaihe'] ?>" data-era-numero="<?= $joukkue['era_numero'] ?>">
+                    <option value="<?= $joukkue['joukkueid'] ?>" data-era="<?= $joukkue['vaihe'] ?>" data-era-numero="<?= $joukkue['era_numero'] ?>">
                         <?= $joukkue['nimi'] ?> - <?= $joukkue['vaihe'] ?> (Erä <?= $joukkue['era_numero'] ?>)
                     </option>
                 <?php endforeach; ?>
@@ -61,10 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div id="timer">
             <h2 id="display">00:00:00</h2>
-            <button type="button" id="startBtn" class="btn btn-success" disabled>Käynnistä</button>
-            <button type="button" id="stopBtn" class="btn btn-danger" disabled>Pysäytä</button>
+            <button type="button" id="startBtn" class="btn btn-success">Käynnistä</button>
+            <button type="button" id="stopBtn" class="btn btn-danger">Pysäytä</button>
             <button type="button" id="lapBtn" class="btn btn-primary">Kierros</button>
-            <button type="button" id="readyBtn" class="btn btn-success">Valmiina</button>
         </div>
 
         <div id="laps">
@@ -95,8 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById('era_numero').value = eraNumero;
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/valmis.js"></script>
     <script src="js/ajastin.js"></script>
 </div>
 

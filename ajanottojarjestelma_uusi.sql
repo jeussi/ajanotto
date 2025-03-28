@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 10, 2025 at 08:29 PM
+-- Generation Time: Mar 28, 2025 at 01:41 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -41,12 +41,12 @@ CREATE TABLE `arvotut_erat` (
 --
 
 INSERT INTO `arvotut_erat` (`id`, `vaihe`, `era_numero`, `joukkue_id`, `tuomari_id`, `rataid`) VALUES
-(1, 'alkuera', 1, 3, 5, NULL),
-(2, 'alkuera', 1, 4, 6, NULL),
-(3, 'alkuera', 1, 6, 7, NULL),
-(4, 'alkuera', 1, 8, 4, NULL),
-(5, 'alkuera', 1, 2, 8, NULL),
-(6, 'alkuera', 1, 1, 2, NULL),
+(1, 'alkuera', 1, 3, 5, 1),
+(2, 'alkuera', 1, 4, 6, 2),
+(3, 'alkuera', 1, 6, 7, 3),
+(4, 'alkuera', 1, 8, 4, 4),
+(5, 'alkuera', 1, 2, 8, 5),
+(6, 'alkuera', 1, 1, 2, 6),
 (7, 'alkuera', 2, 5, 5, NULL),
 (8, 'alkuera', 2, 7, 7, NULL),
 (9, 'valiera', 1, 3, 6, NULL),
@@ -55,8 +55,8 @@ INSERT INTO `arvotut_erat` (`id`, `vaihe`, `era_numero`, `joukkue_id`, `tuomari_
 (12, 'valiera', 1, 4, 2, NULL),
 (13, 'valiera', 1, 1, 8, NULL),
 (14, 'valiera', 1, 8, 4, NULL),
-(15, 'valiera', 2, 5, 6, 1),
-(16, 'valiera', 2, 6, 8, 2);
+(15, 'valiera', 2, 5, 6, NULL),
+(16, 'valiera', 2, 6, 8, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,6 +124,7 @@ INSERT INTO `kayttajat` (`id`, `kayttajanimi`, `salasana`, `rooli`) VALUES
 CREATE TABLE `rata` (
   `rataid` int NOT NULL,
   `valmis` tinyint(1) DEFAULT '0',
+  `aika_aloitettu` tinyint(1) NOT NULL DEFAULT '0',
   `viimeisin_paivitys` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -131,13 +132,13 @@ CREATE TABLE `rata` (
 -- Dumping data for table `rata`
 --
 
-INSERT INTO `rata` (`rataid`, `valmis`, `viimeisin_paivitys`) VALUES
-(1, 0, '2025-03-10 14:52:06'),
-(2, 0, '2025-03-10 14:52:06'),
-(3, 0, '2025-03-10 14:52:06'),
-(4, 0, '2025-03-10 14:52:06'),
-(5, 0, '2025-03-10 14:52:06'),
-(6, 0, '2025-03-10 14:52:06');
+INSERT INTO `rata` (`rataid`, `valmis`, `aika_aloitettu`, `viimeisin_paivitys`) VALUES
+(1, 0, 0, '2025-03-10 14:52:06'),
+(2, 0, 0, '2025-03-10 14:52:06'),
+(3, 0, 0, '2025-03-10 14:52:06'),
+(4, 0, 0, '2025-03-10 14:52:06'),
+(5, 0, 0, '2025-03-10 14:52:06'),
+(6, 0, 0, '2025-03-10 14:52:06');
 
 -- --------------------------------------------------------
 
@@ -166,7 +167,16 @@ INSERT INTO `tulostaulu` (`aikaid`, `joukkueid`, `era`, `era_numero`, `tehtava1a
 (3, 7, 'Alkuera', 2, '00:00.455', '00:00.229', '00:00.291', '00:00.975'),
 (4, 2, 'Alkuera', 1, '00:00.525', '00:00.149', '00:00.169', '00:00.843'),
 (5, 2, 'Valiera', 1, '00:00.830', '00:00.141', '00:00.149', '00:01.121'),
-(6, 1, 'Alkuera', 1, '00:00.580', '00:00.210', '00:00.282', '00:01.072');
+(6, 1, 'Alkuera', 1, '00:00.580', '00:00.210', '00:00.282', '00:01.072'),
+(7, 4, 'Alkuera', 1, '00:00.780', '00:00.255', '00:00.324', '00:01.359'),
+(8, 4, 'Alkuera', 1, '00:00.780', '00:00.255', '00:00.324', '00:01.359'),
+(9, 4, 'Alkuera', 1, '00:00.780', '00:00.255', '00:00.324', '00:01.359'),
+(10, 8, 'Alkuera', 1, '01:06.703', '00:08.090', '00:05.410', '01:20.203'),
+(11, 1, 'Alkuera', 1, '00:08.779', '00:10.242', '00:05.576', '00:24.597'),
+(12, 4, 'Alkuera', 1, '00:27.801', '00:07.859', '00:06.032', '00:41.692'),
+(13, 3, 'Alkuera', 1, '01:59.575', '00:04.296', '00:06.006', '02:09.878'),
+(14, 2, 'Alkuera', 1, '01:57.707', '00:08.016', '00:06.275', '02:11.998'),
+(15, 6, 'Alkuera', 1, '01:58.231', '00:06.398', '00:06.303', '02:10.932');
 
 --
 -- Indexes for dumped tables
@@ -232,7 +242,7 @@ ALTER TABLE `kayttajat`
 -- AUTO_INCREMENT for table `tulostaulu`
 --
 ALTER TABLE `tulostaulu`
-  MODIFY `aikaid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `aikaid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

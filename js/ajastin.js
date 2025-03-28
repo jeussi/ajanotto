@@ -19,7 +19,7 @@ class Ajastin {
 
     start() {
         if (this.isRunning) {
-            return console.error('Timer is already running');
+            return console.error('Ajastin on jo päällä!');
         }
 
         this.isRunning = true;
@@ -29,7 +29,7 @@ class Ajastin {
 
     stop() {
         if (!this.isRunning) {
-            return console.error('Timer is already stopped');
+            return console.error('Ajastin on jo pysäytetty');
         }
 
         this.isRunning = false;
@@ -128,3 +128,29 @@ setInterval(() => {
     const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(3, '0')}`;
     document.getElementById('display').innerText = formattedTime;
 }, 50);
+
+//Automaattinen ajan aloitus
+$(document).ready(function() {
+    let timerStarted = false;
+    function checkStartSignal() {
+        if (timerStarted) {return}; // Ei aloiteta ajastinta, jos jo päällä
+
+        $.ajax({
+            url: 'inc/tarkista_ajan_aloitus.php',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response.aika_aloitettu) {
+                    timer.start();
+                    timerStarted = true;
+                    console.log("Ajastin käynnistetty!");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Aikoja ei viela aloitettu!", error);
+            }
+        });
+    }
+
+    setInterval(checkStartSignal, 500);
+});

@@ -29,6 +29,11 @@ include_once 'header.php';
               <a class="nav-link" href="ajanotto.php">Ajanotto</a>
             </li>
           <?php endif; ?>
+          <?php if (tarkistaRooli('sihteeri') or tarkistaRooli('admin')) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="ajan_aloitus.php">Kisan aloitus</a>
+            </li>
+          <?php endif; ?>
           <li class="nav-item">
             <a class="nav-link" href="tulospalvelu.php">Tulospalvelu</a>
           </li>
